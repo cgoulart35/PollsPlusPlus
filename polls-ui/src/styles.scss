@@ -1,0 +1,38 @@
+// styles.scss
+$primary-color: #3498db;
+$secondary-color: #2ecc71;
+$font-stack: Helvetica, sans-serif;
+
+body {
+  font-family: $font-stack;
+  margin: 0;
+  padding: 0;
+  background-color: #202022;
+}
+
+h1, h2, h4, h5, h6 {
+  color: $primary-color;
+}
+
+.container {
+  position: relative;
+  height: 100vh; // Set the height of the container to the height of the viewport
+  padding-left: 30px;
+  padding-bottom: 0; // Remove padding at the bottom
+  padding-right: 0; // Remove right padding
+}
+
+body, .container {
+  height: 100vh;
+  overflow: hidden; // Prevent scrolling on the body and container
+}
+
+button {
+  font-size: medium;
+}
+
+.main-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%; // Ensure main-content takes up full height of its parent
+}

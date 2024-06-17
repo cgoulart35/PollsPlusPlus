@@ -1,0 +1,78 @@
+:host {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.cdk-global-overlay-wrapper, .cdk-overlay-pane {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.my-centered-dialog .cdk-overlay-pane {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cdk-overlay-pane {
+  position: fixed !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  height: 60vh !important; // Adjust this value to change the height of the dialog
+  max-height: 80vh !important; // Adjust this value to set the maximum height of the dialog
+}
+
+.custom-backdrop.cdk-overlay-backdrop {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0,0,0,0.6);
+}
+
+.dialog-content {
+  padding-top: 10px;
+  padding-right: 20px;
+  padding-bottom: 10px;
+  padding-left: 20px;
+}
+
+.mat-icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+h2 {
+  width: 100%; // Adjust this value as needed
+  margin-top: 0;
+  color: purple;
+  margin-right: 100px;
+}
+
+.dialog-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.my-dialog {
+  width: 25%; /* or any percentage/value you want */
+}
+
+@media only screen and (max-width: 600px) {
+  .my-dialog {
+    width: 90%; /* or any percentage/value you want */
+  }
+}

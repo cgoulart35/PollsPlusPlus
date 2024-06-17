@@ -1,0 +1,44 @@
+<!-- home-page.component.html -->
+<div class="container">
+  <div class="main-content">
+    <div class="login-container">
+      <div class="bar">
+        <div class="tile">
+          <h1>
+            <span *ngFor="let char of title.split(''); let i = index" [style.color]="titleColors[i]">{{ char }}</span>
+          </h1>
+        </div>
+        <div class="action-buttons">
+          <button id="sign-in-out-button" (click)="openLoginDialog()">{{ authService.isLoggedIn ? 'Profile' : 'Sign In' }}</button>
+        </div>
+      </div>
+    </div>
+    <div class="polls-wrapper">
+      <div class="polls-container">
+        <div *ngFor="let poll of polls" class="poll" [style.background-color]="colors[poll.timeColorControl % colors.length][0]" [style.color]="colors[poll.timeColorControl % colors.length][1]">
+          <h3>{{ poll.question }}</h3>
+          <p>Yes: {{ poll.yesPercentage }}%</p>
+          <p>No: {{ poll.noPercentage }}%</p>
+          <p>Total Participants: {{ poll.totalParticipants }}</p>
+          <div class="vote-buttons">
+            <button class="vote-button" [class.selected]="(poll.answer === 'leftAnswer')" (click)="vote(poll.id, 'leftAnswer')">{{ poll.leftAnswer }}</button>
+            <button class="vote-button" [class.selected]="(poll.answer === 'rightAnswer')" (click)="vote(poll.id, 'rightAnswer')">{{ poll.rightAnswer }}</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="comments-box bottom-center">
+      <div class="comments-box-header">
+        <button (click)="toggleCommentsBox()">
+          {{ isCommentsBoxVisible ? 'Hide Comments' : 'Show Comments' }}
+        </button>
+      </div >
+      <div [hidden]="!isCommentsBoxVisible">
+        <br>
+        <app-comments></app-comments>
+      </div>
+      <p>Live data. Crowd-sourced. No nonsense.</p>
+      <p>All comments & submissions are anonymous. If your comment is flagged, your email & IP will be blacklisted.</p>
+    </div>
+  </div>
+</div>

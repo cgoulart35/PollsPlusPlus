@@ -1,0 +1,69 @@
+@import '../../styles.scss';
+
+.comment-form {
+  display: grid;
+  grid-template-columns: 3fr auto; // Allocate three times as much space to the textarea
+  gap: 0;
+  justify-content: space-between;
+  align-items: stretch; // Make items fill the container vertically
+  width: 100%;
+  margin-bottom: 10px;
+
+  textarea {
+    // Remove default padding
+    padding: 0 0 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    box-sizing: border-box; // Include padding and border in element's total width and height
+    resize: none; // Disable resizing
+    flex-grow: 1; // Allow the textarea to grow to fill the space
+    margin-right: 10px; // Add some margin to the right of the textarea
+  }
+
+  button {
+    background-color: $primary-color;
+    border: none;
+    padding: 0; // Remove default padding
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    box-sizing: border-box; // Include padding and border in element's total width and height
+    margin-left: auto !important; // Push the button to the right side of the flex container
+
+    &:hover {
+      background-color: darken($primary-color, 10%);
+    }
+  }
+
+  button[disabled] {
+    background-color: grey;
+    cursor: not-allowed;
+  }
+}
+
+.comment-list {
+  height: 200px; // Set a fixed height
+  overflow-y: auto; // Enable vertical scrolling when content overflows
+  overflow-x: hidden; // Prevent horizontal scrolling
+  width: 100%; // Adjust width to match comment box
+  max-width: 100%; // Adjust width as needed
+  border: 1px solid #000; /* Add this line */
+
+  .comment {
+    height: 10px;
+    width: 100% !important; // Set width to 100%
+    margin-left: 5px;
+  }
+}
+
+.comment-form form textarea {
+  width: 100%;
+  padding-left: 10px;
+  padding-top: 10px;
+}
+
+.comment-form form {
+  display: flex;
+  justify-content: flex-end;
+}

@@ -1,0 +1,20 @@
+<div class="comments">
+  <div class="comment-form">
+    <form (ngSubmit)="addComment()">
+      <textarea
+        [(ngModel)]="newComment"
+        name="comment"
+        maxlength="30"
+        required
+        (keypress)="handleKeyPress($event)"
+        [placeholder]="placeholderText"
+        [disabled]="!authService.isLoggedIn"></textarea>
+      <button type="submit" [disabled]="!authService.isLoggedIn">Add Comment</button>
+    </form>
+  </div>
+  <div #commentList class="comment-list">
+    <div *ngFor="let comment of comments" class="comment">
+      <p>{{ comment }}</p>
+    </div>
+  </div>
+</div>

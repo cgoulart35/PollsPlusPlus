@@ -1,0 +1,37 @@
+<div class="dialog-content" *ngIf="authService.isLoggedIn; else loginForm">
+  <div class="bar">
+    <h2>Update Profile</h2>
+    <button mat-icon-button mat-dialog-close style="position: absolute; right: 0; top: 0;">
+      <mat-icon>X</mat-icon>
+    </button>
+  </div>
+  <form class="dialog-form" (ngSubmit)="updateProfile()">
+    <input [(ngModel)]="email" name="email" placeholder="New Email">
+    <br>
+    <input [(ngModel)]="password" name="password" placeholder="New Password" type="password">
+    <br>
+    <button type="submit">Update</button>
+    <br>
+    <a href="#">Enroll in notifications for new poll alerts!</a>
+  </form>
+</div>
+
+<ng-template #loginForm>
+  <div class="dialog-content">
+    <div class="bar">
+      <h2>Sign In</h2>
+      <button mat-icon-button mat-dialog-close style="position: absolute; right: 0; top: 0;">
+        <mat-icon>X</mat-icon>
+      </button>
+    </div>
+    <form class="dialog-form" (ngSubmit)="login()">
+      <input [(ngModel)]="email" name="email" placeholder="Email">
+      <br>
+      <input [(ngModel)]="password" name="password" placeholder="Password" type="password">
+      <br>
+      <button type="submit">Sign In</button>
+      <br>
+      <a href="#">Forgot my password</a>
+    </form>
+  </div>
+</ng-template>

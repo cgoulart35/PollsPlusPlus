@@ -1,0 +1,191 @@
+@import '../../styles.scss';
+
+.login-container {
+  position: absolute; // Take the login-container out of the normal document flow
+  width: 100%; // Make the login-container span the full width of the container
+  display: flex;
+  flex-direction: column;
+  gap: 20px; // Add gap between polls
+}
+
+.bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 15px;
+
+  h1 {
+    white-space: nowrap; // Prevents the text from wrapping to the next line
+    overflow: hidden; // Keeps the content from spilling over
+    text-overflow: ellipsis; // Adds an ellipsis when the text overflows
+    color: purple;
+  }
+
+  .action-buttons {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    position: relative; // Add this line
+
+    &::after {
+      content: "";
+      display: block;
+      width: 30px;
+    }
+  }
+}
+
+.tile {
+  background-color: rgba(255, 255, 255, .75);
+  border-radius: 5px;
+  padding: 0; // Remove default padding
+  width: 160px; // match the width of #sign-in-out-button
+  height: 48.09px; // match the height of #sign-in-out-button
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#sign-in-out-button {
+  background-color: $primary-color;
+  border: none;
+  padding: 0; // Remove default padding
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  box-sizing: border-box; // Include padding and border in element's total width and height
+  margin-left: auto !important; // Push the button to the right side of the flex container
+  width: 78.5px; // Replace with the computed width of the "Add Comment" button
+  height: 48.09px; // Replace with the computed height of the "Add Comment" button
+  position: relative;
+  right: 40px;
+
+  &:hover {
+    background-color: darken($primary-color, 10%);
+  }
+}
+
+.polls-wrapper {
+  padding-top: 80px; // adjust this value to the height of your .login-container
+  overflow: auto;
+  overflow-y: hidden;
+  height: calc(100% - 100px); // adjust this value to the height of your .login-container
+}
+
+// Set default flex direction to column
+.polls-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  flex-direction: column;
+  gap: 20px; // Add gap between polls
+  max-height: 600px; /* Adjust this value as needed */
+  flex-grow: 1;
+  padding-left: 0; // Add padding to the left
+  padding-right: 30px; // Add padding to the left
+  padding-bottom: 250px; // Adjust this value as needed
+  box-sizing: border-box; // Include padding in total width
+  width: 100%; // Set width to 100% of the parent container width
+  min-height: 100%; // Ensure polls-container takes up at least the full height of its parent
+  height: calc(100% - 50px); // Adjust 50px to the height of your comments box header
+  overflow-y: auto; // Enable vertical scrolling within the polls container
+}
+
+.poll {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  border: 1px solid #000; /* Adjust as needed */
+  border-radius: 10px;
+  padding: 5px; /* Adjust as needed */
+  width: 200px;
+  height: 225px;
+
+  h3 {
+    font-size: 1.25em; // Adjust as needed
+    margin: 0;
+  }
+
+  p {
+    margin: 5px;
+  }
+}
+
+.vote-buttons {
+  margin-top: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.vote-button {
+  margin-top: 5px;
+  flex: 1 0 auto;
+  min-width: 100px; /* Adjust as needed */
+  height: 30px; /* Adjust as needed */
+  //border-radius: 10px;
+}
+
+.vote-button.selected {
+  background-color: gray; // Change the color as per your preference
+}
+
+// Comments section box
+.comments-box-header {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.comments-box {
+  width: 90%;
+  margin: 20px 20px 13px auto;
+  padding: 20px;
+  background-color: #fff;
+  border: 1px solid #000; /* Add this line */
+  border-radius: 10px;
+}
+
+.bottom-center {
+  position: fixed; // Change position to fixed
+  bottom: 0; // Adjust bottom value to position the box at the desired location
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  max-width: 800px;
+}
+
+// Responsive design adjustments
+@media (min-width: 768px) {
+  // Change flex direction to row for desktop
+  .polls-container {
+    flex-direction: row;
+    flex-wrap: wrap; // Allow wrapping of polls
+  }
+}
+
+@media (max-width: 600px) {
+  .bar {
+    margin-top: 30px;
+
+    h1 {
+      font-size: 1.25em; // smaller font size for screens 600px or less
+    }
+  }
+
+  .comments-box {
+    padding-left: 10px; // adjust as needed
+    padding-right: 10px; // adjust as needed
+  }
+
+  .poll {
+    width: 96%; // Adjust this value as needed
+    font-size: 1.25em;
+  }
+
+  .polls-container {
+    margin-top: 30px;
+  }
+
+  #sign-in-out-button {
+    right: 35px;
+  }
+}
